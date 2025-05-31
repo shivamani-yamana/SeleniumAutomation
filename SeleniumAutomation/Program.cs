@@ -15,12 +15,14 @@ namespace Selenium_Automation
 
             try
             {
+                // Target web url
                 driver.Navigate().GoToUrl("https://app.cloudqa.io/home/AutomationPracticeForm");
                 driver.Manage().Window.Maximize();
 
+                // wait for 4 seconds assuming page will load in this time
                 Thread.Sleep(4000);
 
-                IWebElement form = driver.FindElement(By.Id("automationtestform"));
+                IWebElement form = driver.FindElement(By.Id("automationtestform")); //target parent element form
 
                 IWebElement firstname = form.FindElement(By.Id("fname"));
                 firstname.Clear();
@@ -31,7 +33,7 @@ namespace Selenium_Automation
 
                 IWebElement dateElement = form.FindElement(By.Id("dob"));
                 dateElement.Clear();
-                dateElement.SendKeys("2000-01-01");
+                dateElement.SendKeys("2003-09-15");
 
                 IWebElement dropdown = form.FindElement(By.Id("state"));
 
@@ -47,7 +49,7 @@ namespace Selenium_Automation
                 submitBtn.Click();
                 
 
-                Console.WriteLine("✅ Automation test for first form completed successfully.");
+                Console.WriteLine("Automation test completed.");
             }
             catch(Exception ex)
             {
@@ -55,7 +57,7 @@ namespace Selenium_Automation
             }
             finally
             {
-                Thread.Sleep(3000);
+                Thread.Sleep(3000); //wait for 3 seconds to quit the driver
                 driver.Quit();
             }
         }
